@@ -148,3 +148,217 @@ document.addEventListener('DOMContentLoaded', () => {
 
     trustStripObserver.observe(trustStrip);
 });
+
+
+/* ========== SERVICES SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('[data-services-carousel]');
+
+    if (!carousel) {
+        return;
+    }
+
+    const viewport = carousel.querySelector('[data-services-viewport]');
+    const track = carousel.querySelector('[data-services-track]');
+    const dotsContainer = carousel.querySelector('[data-services-dots]');
+    const originalCards = Array.from(track.children);
+    const cardCount = originalCards.length;
+    const autoplayDelay = 4200;
+    let visibleCards = 0;
+    let slideStep = 1;
+    let currentIndex = cardCount;
+    let autoplayTimer = null;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartTranslate = 0;
+    let currentTranslate = 0;
+
+    const getGap = () => {
+        const styles = window.getComputedStyle(track);
+        return parseFloat(styles.columnGap || styles.gap) || 0;
+    };
+
+    const getCardSize = () => {
+        const firstCard = track.querySelector('.service-card');
+        return firstCard ? firstCard.getBoundingClientRect().width + getGap() : 0;
+    };
+
+    const getVisibleCards = () => {
+        const styles = window.getComputedStyle(carousel.querySelector('.services-carousel'));
+        return Number.parseInt(styles.getPropertyValue('--visible-cards'), 10) || 1;
+    };
+
+    const getPageCount = () => visibleCards === 2 ? 2 : cardCount;
+
+    const getActiveDotIndex = () => {
+        const normalizedIndex = ((currentIndex % cardCount) + cardCount) % cardCount;
+        return visibleCards === 2 ? Math.floor(normalizedIndex / 2) : normalizedIndex;
+    };
+
+    const setTrackPosition = (index, shouldAnimate = true) => {
+        const cardSize = getCardSize();
+
+        track.classList.toggle('is-dragging', !shouldAnimate);
+        currentTranslate = -index * cardSize;
+        track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
+    };
+
+    const updateDots = () => {
+        const activeDotIndex = getActiveDotIndex();
+        const dots = dotsContainer.querySelectorAll('.services-carousel__dot');
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('is-active', index === activeDotIndex);
+            dot.setAttribute('aria-current', index === activeDotIndex ? 'true' : 'false');
+        });
+    };
+
+    const normalizeIndex = () => {
+        if (currentIndex >= cardCount * 2) {
+            currentIndex -= cardCount;
+            setTrackPosition(currentIndex, false);
+        }
+
+        if (currentIndex < cardCount) {
+            currentIndex += cardCount;
+            setTrackPosition(currentIndex, false);
+        }
+    };
+
+    const goToIndex = (index, shouldAnimate = true) => {
+        currentIndex = index;
+        setTrackPosition(currentIndex, shouldAnimate);
+        updateDots();
+    };
+
+    const goToNext = () => {
+        goToIndex(currentIndex + slideStep);
+    };
+
+    const startAutoplay = () => {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = window.setInterval(goToNext, autoplayDelay);
+    };
+
+    const stopAutoplay = () => {
+        window.clearInterval(autoplayTimer);
+    };
+
+    const buildClones = () => {
+        track.innerHTML = '';
+
+        for (let group = 0; group < 3; group += 1) {
+            originalCards.forEach((card) => {
+                const cardClone = card.cloneNode(true);
+
+                cardClone.classList.toggle('is-clone', group !== 1);
+
+                track.appendChild(cardClone);
+            });
+        }
+    };
+
+    const buildDots = () => {
+        const pageCount = getPageCount();
+        dotsContainer.innerHTML = '';
+
+        for (let index = 0; index < pageCount; index += 1) {
+            const dot = document.createElement('button');
+            const targetIndex = visibleCards === 2 ? index * 2 : index;
+
+            dot.className = 'services-carousel__dot';
+            dot.type = 'button';
+            dot.setAttribute('aria-label', `Show services slide ${index + 1}`);
+            dot.addEventListener('click', () => {
+                stopAutoplay();
+                goToIndex(cardCount + targetIndex);
+                startAutoplay();
+            });
+
+            dotsContainer.appendChild(dot);
+        }
+    };
+
+    const syncCarousel = () => {
+        const previousVisibleCards = visibleCards;
+        visibleCards = getVisibleCards();
+        slideStep = visibleCards === 2 ? 2 : 1;
+
+        if (previousVisibleCards !== visibleCards) {
+            const normalizedIndex = ((currentIndex % cardCount) + cardCount) % cardCount;
+            const adjustedIndex = visibleCards === 2 && normalizedIndex >= 2 ? 2 : normalizedIndex;
+            currentIndex = cardCount + adjustedIndex;
+            buildDots();
+        }
+
+        setTrackPosition(currentIndex, false);
+        updateDots();
+    };
+
+    const getPointerX = (event) => event.clientX;
+
+    const handlePointerDown = (event) => {
+        if (event.button !== undefined && event.button !== 0) {
+            return;
+        }
+
+        isDragging = true;
+        dragStartX = getPointerX(event);
+        dragStartTranslate = currentTranslate;
+        viewport.classList.add('is-dragging');
+        track.classList.add('is-dragging');
+        stopAutoplay();
+        viewport.setPointerCapture(event.pointerId);
+    };
+
+    const handlePointerMove = (event) => {
+        if (!isDragging) {
+            return;
+        }
+
+        const dragDistance = getPointerX(event) - dragStartX;
+        currentTranslate = dragStartTranslate + dragDistance;
+        track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
+    };
+
+    const handlePointerUp = (event) => {
+        if (!isDragging) {
+            return;
+        }
+
+        const dragDistance = getPointerX(event) - dragStartX;
+        const cardSize = getCardSize();
+        const threshold = Math.min(120, cardSize * 0.2);
+
+        isDragging = false;
+        viewport.classList.remove('is-dragging');
+        track.classList.remove('is-dragging');
+
+        if (Math.abs(dragDistance) > threshold) {
+            const direction = dragDistance < 0 ? 1 : -1;
+            goToIndex(currentIndex + (direction * slideStep));
+        } else {
+            goToIndex(currentIndex);
+        }
+
+        startAutoplay();
+    };
+
+    buildClones();
+    syncCarousel();
+    startAutoplay();
+
+    track.addEventListener('transitionend', normalizeIndex);
+    viewport.addEventListener('pointerdown', handlePointerDown);
+    viewport.addEventListener('pointermove', handlePointerMove);
+    viewport.addEventListener('pointerup', handlePointerUp);
+    viewport.addEventListener('pointercancel', handlePointerUp);
+    viewport.addEventListener('mouseenter', stopAutoplay);
+    viewport.addEventListener('mouseleave', () => {
+        if (!isDragging) {
+            startAutoplay();
+        }
+    });
+
+    window.addEventListener('resize', syncCarousel);
+});
