@@ -641,6 +641,9 @@ img {
 /* ---------- Services Shell ---------- */
 .services-section {
     background-color: #f6f7f9;
+    background-image: url('../images/texture/texture-1.webp');
+    background-repeat: repeat;
+    background-size: 500px;
     color: #23272e;
 }
 
@@ -748,6 +751,15 @@ img {
 .service-card:hover {
     transform: translateY(-6px) scale(1.015);
     box-shadow: 0 26px 54px rgba(35, 39, 46, 0.16);
+}
+
+.service-card__image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 12px 28px rgba(35, 39, 46, 0.12);
 }
 
 .service-card__title {
@@ -896,6 +908,11 @@ img {
     .service-card {
         min-height: 452px;
         padding: 22px;
+    }
+
+    .service-card__image {
+        margin-bottom: 18px;
+        border-radius: 14px;
     }
 
     .service-card__cta {
