@@ -515,3 +515,121 @@ img {
         font-size: 0.86rem;
     }
 }
+
+
+/* ========== TRUST STRIP SECTION ========== */
+
+
+/* ---------- Trust Strip Shell ---------- */
+.trust-strip {
+    background-color: #244584;
+    color: #f6f7f9;
+}
+
+.trust-strip__inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    width: min(1040px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: clamp(18px, 3vw, 26px) 0;
+    gap: clamp(20px, 5vw, 72px);
+}
+
+
+/* ---------- Trust Items ---------- */
+.trust-strip__item {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 8px;
+    min-width: 0;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+        opacity 620ms ease,
+        transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.trust-strip.is-visible .trust-strip__item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.trust-strip.is-visible .trust-strip__item:nth-child(2) {
+    transition-delay: 90ms;
+}
+
+.trust-strip.is-visible .trust-strip__item:nth-child(3) {
+    transition-delay: 180ms;
+}
+
+.trust-strip__icon {
+    width: clamp(24px, 3vw, 34px);
+    height: clamp(24px, 3vw, 34px);
+    color: #f6f7f9;
+    fill: currentColor;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.18));
+}
+
+.trust-strip__text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.86rem, 1.5vw, 1rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: #f6f7f9;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ---------- Trust Strip Responsive ---------- */
+@media (max-width: 640px) {
+    .trust-strip__inner {
+        width: calc(100% - 24px);
+        padding: 15px 0;
+        gap: 12px;
+    }
+
+    .trust-strip__item {
+        gap: 6px;
+    }
+
+    .trust-strip__icon {
+        width: 23px;
+        height: 23px;
+    }
+
+    .trust-strip__text {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .trust-strip__inner {
+        width: calc(100% - 18px);
+        padding: 12px 0;
+        gap: 7px;
+    }
+
+    .trust-strip__item {
+        gap: 5px;
+    }
+
+    .trust-strip__icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .trust-strip__text {
+        font-size: 0.68rem;
+        line-height: 1.18;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trust-strip__item {
+        transition: none;
+    }
+}

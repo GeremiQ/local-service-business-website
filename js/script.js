@@ -116,3 +116,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+/* ========== TRUST STRIP SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const trustStrip = document.querySelector('[data-trust-strip]');
+
+    if (!trustStrip) {
+        return;
+    }
+
+    const revealTrustStrip = () => {
+        trustStrip.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealTrustStrip();
+        return;
+    }
+
+    const trustStripObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                revealTrustStrip();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.28
+    });
+
+    trustStripObserver.observe(trustStrip);
+});
