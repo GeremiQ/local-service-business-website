@@ -503,14 +503,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = triggers.map((trigger) => trigger.dataset.gallerySrc);
     let activeIndex = 0;
     let touchStartX = 0;
+    let isChangingImage = false;
 
-    const showImage = (index) => {
+    const setImage = (index) => {
         activeIndex = (index + images.length) % images.length;
         lightboxImage.src = images[activeIndex];
     };
 
+    const showImage = (index, direction = 0) => {
+        if (isChangingImage) {
+            return;
+        }
+
+        if (lightbox.hidden) {
+            setImage(index);
+            return;
+        }
+
+        isChangingImage = true;
+        lightbox.style.setProperty('--gallery-slide-distance', `${direction * -22}px`);
+        lightbox.classList.add('is-changing');
+
+        window.setTimeout(() => {
+            setImage(index);
+            lightbox.style.setProperty('--gallery-slide-distance', `${direction * 22}px`);
+
+            window.requestAnimationFrame(() => {
+                lightbox.classList.remove('is-changing');
+                isChangingImage = false;
+            });
+        }, 180);
+    };
+
     const openLightbox = (index) => {
-        showImage(index);
+        setImage(index);
         lightbox.hidden = false;
         document.body.classList.add('is-lightbox-open');
         closeButton.focus();
@@ -524,11 +550,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const showPreviousImage = () => {
-        showImage(activeIndex - 1);
+        showImage(activeIndex - 1, -1);
     };
 
     const showNextImage = () => {
-        showImage(activeIndex + 1);
+        showImage(activeIndex + 1, 1);
     };
 
     triggers.forEach((trigger, index) => {
