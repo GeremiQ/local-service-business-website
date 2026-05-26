@@ -169,7 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = cardCount;
     let autoplayTimer = null;
     let isDragging = false;
+    let dragAxis = null;
     let dragStartX = 0;
+    let dragStartY = 0;
     let dragStartTranslate = 0;
     let currentTranslate = 0;
 
@@ -296,6 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const getPointerX = (event) => event.clientX;
+    const getPointerY = (event) => event.clientY;
 
     const handlePointerDown = (event) => {
         if (event.button !== undefined && event.button !== 0) {
@@ -303,7 +306,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         isDragging = true;
+        dragAxis = null;
         dragStartX = getPointerX(event);
+        dragStartY = getPointerY(event);
         dragStartTranslate = currentTranslate;
         viewport.classList.add('is-dragging');
         track.classList.add('is-dragging');
@@ -316,10 +321,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const dragDistanceX = getPointerX(event) - dragStartX;
+        const dragDistanceY = getPointerY(event) - dragStartY;
+
+        if (!dragAxis && (Math.abs(dragDistanceX) > 8 || Math.abs(dragDistanceY) > 8)) {
+            dragAxis = Math.abs(dragDistanceX) > Math.abs(dragDistanceY) ? 'horizontal' : 'vertical';
+        }
+
+        if (dragAxis !== 'horizontal') {
+            return;
+        }
+
         event.preventDefault();
 
-        const dragDistance = getPointerX(event) - dragStartX;
-        currentTranslate = dragStartTranslate + dragDistance;
+        currentTranslate = dragStartTranslate + dragDistanceX;
         track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
     };
 
@@ -335,6 +350,11 @@ document.addEventListener('DOMContentLoaded', () => {
         isDragging = false;
         viewport.classList.remove('is-dragging');
         track.classList.remove('is-dragging');
+
+        if (dragAxis !== 'horizontal') {
+            startAutoplay();
+            return;
+        }
 
         if (Math.abs(dragDistance) > threshold) {
             const direction = dragDistance < 0 ? 1 : -1;
