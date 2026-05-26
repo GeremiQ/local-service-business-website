@@ -996,7 +996,9 @@ img {
 /* ---------- About Image ---------- */
 .about-section__media {
     position: relative;
-    min-height: 460px;
+    height: clamp(360px, 42vw, 460px);
+    min-height: 0;
+    margin-right: clamp(12px, 2vw, 24px);
     transform: skewX(-7deg);
     overflow: hidden;
     border-radius: 24px;
@@ -1004,6 +1006,8 @@ img {
 }
 
 .about-section__image {
+    position: absolute;
+    inset: 0;
     width: 116%;
     height: 100%;
     max-width: none;
