@@ -46,17 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const headerOffset = header.offsetHeight + 24;
-        const activeSection = sections.reduce((current, section) => {
+        let activeSectionId = '';
+
+        sections.forEach((section) => {
             const sectionTop = section.getBoundingClientRect().top;
 
             if (sectionTop <= headerOffset) {
-                return section;
+                activeSectionId = section.id;
             }
+        });
 
-            return current;
-        }, sections[0]);
-
-        setActiveLink(activeSection.id);
+        setActiveLink(activeSectionId);
     };
 
     const scrollToSection = (targetId) => {

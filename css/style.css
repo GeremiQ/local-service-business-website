@@ -73,7 +73,13 @@ img {
 .site-header.is-scrolled,
 .site-header.is-menu-open {
     color: #23272e;
-    background-color: rgba(246, 247, 249, 0.9);
+    background-color: #f6f7f9;
+    background-image:
+        url('../images/texture/texture-1.webp'),
+        linear-gradient(rgba(246, 247, 249, 0.48), rgba(246, 247, 249, 0.48));
+    background-repeat: repeat;
+    background-size: 500px, auto;
+    background-blend-mode: multiply, normal;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     box-shadow: 0 14px 40px rgba(35, 39, 46, 0.08);
