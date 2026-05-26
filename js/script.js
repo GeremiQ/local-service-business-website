@@ -305,6 +305,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        if (event.target.closest('a, button')) {
+            return;
+        }
+
         isDragging = true;
         dragAxis = null;
         dragStartX = getPointerX(event);
