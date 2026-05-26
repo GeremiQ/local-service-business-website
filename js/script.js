@@ -316,6 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        event.preventDefault();
+
         const dragDistance = getPointerX(event) - dragStartX;
         currentTranslate = dragStartTranslate + dragDistance;
         track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
