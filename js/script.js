@@ -362,3 +362,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', syncCarousel);
 });
+
+
+/* ========== ABOUT SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const aboutSection = document.querySelector('[data-about-section]');
+
+    if (!aboutSection) {
+        return;
+    }
+
+    const revealAboutSection = () => {
+        aboutSection.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealAboutSection();
+        return;
+    }
+
+    const aboutObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                revealAboutSection();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.24
+    });
+
+    aboutObserver.observe(aboutSection);
+});
