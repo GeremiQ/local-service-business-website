@@ -2011,3 +2011,108 @@ img {
         transition: none;
     }
 }
+
+
+/* ========== SERVICE OVERVIEW SECTION ========== */
+
+
+/* ---------- Service Overview Shell ---------- */
+.service-overview-section {
+    background-color: #f6f7f9;
+    color: #23272e;
+}
+
+.service-overview-section__inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: clamp(76px, 10vw, 124px) 0;
+    gap: clamp(48px, 7vw, 88px);
+}
+
+.service-overview-section__panel {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+}
+
+.service-overview-section__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2rem, 3.6vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0;
+    color: #23272e;
+}
+
+.service-overview-section__text {
+    max-width: 560px;
+    margin-top: clamp(22px, 3vw, 30px);
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 1.7vw, 1.12rem);
+    font-weight: 500;
+    line-height: 1.82;
+    color: #23272e;
+}
+
+
+/* ---------- Service Overview List ---------- */
+.service-overview-section__list {
+    display: grid;
+    gap: 14px;
+    width: min(100%, 520px);
+    margin-top: clamp(24px, 3vw, 32px);
+    list-style: none;
+}
+
+.service-overview-section__list li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.96rem, 1.45vw, 1.06rem);
+    font-weight: 600;
+    line-height: 1.45;
+    color: #23272e;
+}
+
+.service-overview-section__check {
+    width: 22px;
+    height: 22px;
+    color: #2f9e44;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* ---------- Service Overview Responsive ---------- */
+@media (max-width: 860px) {
+    .service-overview-section__inner {
+        grid-template-columns: 1fr;
+        width: min(760px, calc(100% - 36px));
+        gap: 58px;
+    }
+}
+
+@media (max-width: 520px) {
+    .service-overview-section__inner {
+        width: calc(100% - 28px);
+        padding: 64px 0;
+        gap: 48px;
+    }
+
+    .service-overview-section__text {
+        line-height: 1.7;
+    }
+
+    .service-overview-section__list {
+        gap: 13px;
+    }
+}
