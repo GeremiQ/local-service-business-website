@@ -1897,3 +1897,114 @@ img {
         font-size: 0.98rem;
     }
 }
+
+
+/* ========== SERVICE BENEFITS STRIP SECTION ========== */
+
+
+/* ---------- Service Benefits Shell ---------- */
+.service-benefits-strip {
+    background-color: #244584;
+    color: #f6f7f9;
+}
+
+.service-benefits-strip__inner {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: clamp(32px, 4vw, 46px) 0;
+    gap: clamp(22px, 4vw, 46px);
+}
+
+
+/* ---------- Service Benefit Items ---------- */
+.service-benefits-strip__item {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 640ms ease,
+        transform 640ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.service-benefits-strip.is-visible .service-benefits-strip__item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-benefits-strip.is-visible .service-benefits-strip__item:nth-child(2) {
+    transition-delay: 90ms;
+}
+
+.service-benefits-strip.is-visible .service-benefits-strip__item:nth-child(3) {
+    transition-delay: 180ms;
+}
+
+.service-benefits-strip.is-visible .service-benefits-strip__item:nth-child(4) {
+    transition-delay: 270ms;
+}
+
+.service-benefits-strip__icon {
+    width: clamp(32px, 4vw, 42px);
+    height: clamp(32px, 4vw, 42px);
+    color: #f6f7f9;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.18));
+}
+
+.service-benefits-strip__heading {
+    margin-top: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.88rem, 1.4vw, 1rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: #f6f7f9;
+}
+
+.service-benefits-strip__text {
+    max-width: 230px;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.84rem, 1.25vw, 0.94rem);
+    font-weight: 500;
+    line-height: 1.5;
+    color: #f6f7f9;
+}
+
+
+/* ---------- Service Benefits Responsive ---------- */
+@media (max-width: 900px) {
+    .service-benefits-strip__inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(720px, calc(100% - 36px));
+        gap: 34px 42px;
+    }
+}
+
+@media (max-width: 560px) {
+    .service-benefits-strip__inner {
+        grid-template-columns: 1fr;
+        width: calc(100% - 28px);
+        padding: 38px 0;
+        gap: 30px;
+    }
+
+    .service-benefits-strip__text {
+        max-width: 300px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-benefits-strip__item {
+        transition: none;
+    }
+}

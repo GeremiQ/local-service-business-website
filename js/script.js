@@ -452,3 +452,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactObserver.observe(contactSection);
 });
+
+
+/* ========== SERVICE BENEFITS STRIP SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const serviceBenefitsStrip = document.querySelector('[data-service-benefits]');
+
+    if (!serviceBenefitsStrip) {
+        return;
+    }
+
+    const revealServiceBenefits = () => {
+        serviceBenefitsStrip.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealServiceBenefits();
+        return;
+    }
+
+    const serviceBenefitsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                revealServiceBenefits();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.28
+    });
+
+    serviceBenefitsObserver.observe(serviceBenefitsStrip);
+});
