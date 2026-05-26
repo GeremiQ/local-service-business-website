@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const headerOffset = header.offsetHeight + 24;
+        const activationPoint = header.offsetHeight + window.innerHeight * 0.28;
         let activeSectionId = '';
 
         sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top;
+            const sectionPosition = section.getBoundingClientRect();
 
-            if (sectionTop <= headerOffset) {
+            if (sectionPosition.top <= activationPoint && sectionPosition.bottom > activationPoint) {
                 activeSectionId = section.id;
             }
         });
