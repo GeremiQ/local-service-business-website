@@ -1212,6 +1212,9 @@ img {
 .contact-section {
     overflow: hidden;
     background-color: #f6f7f9;
+    background-image: url('../images/texture/texture-1.webp');
+    background-repeat: repeat;
+    background-size: 500px;
     color: #23272e;
 }
 
