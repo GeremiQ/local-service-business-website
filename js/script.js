@@ -688,3 +688,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+/* ========== SERVICE CTA SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const serviceCta = document.querySelector('[data-service-cta]');
+
+    if (!serviceCta) {
+        return;
+    }
+
+    const revealServiceCta = () => {
+        serviceCta.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealServiceCta();
+        return;
+    }
+
+    const serviceCtaObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                revealServiceCta();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.24
+    });
+
+    serviceCtaObserver.observe(serviceCta);
+});
