@@ -2339,3 +2339,106 @@ img {
         transform: scale(1.06);
     }
 }
+
+
+/* ========== SERVICE PROCESS SECTION ========== */
+
+
+/* ---------- Service Process Shell ---------- */
+.service-process-strip {
+    background-color: #bb8b37;
+    color: #f6f7f9;
+}
+
+.service-process-strip__inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    width: min(1040px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: clamp(36px, 5vw, 54px) 0;
+    gap: clamp(26px, 5vw, 64px);
+}
+
+
+/* ---------- Service Process Items ---------- */
+.service-process-strip__item {
+    display: grid;
+    justify-items: center;
+    gap: 11px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 640ms ease,
+        transform 640ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.service-process-strip.is-visible .service-process-strip__item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-process-strip.is-visible .service-process-strip__item:nth-child(2) {
+    transition-delay: 100ms;
+}
+
+.service-process-strip.is-visible .service-process-strip__item:nth-child(3) {
+    transition-delay: 200ms;
+}
+
+.service-process-strip__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(46px, 5vw, 56px);
+    height: clamp(46px, 5vw, 56px);
+    border-radius: 999px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 800;
+    line-height: 1;
+    color: #f6f7f9;
+    background-color: #351e13;
+    box-shadow: 0 10px 24px rgba(53, 30, 19, 0.24);
+}
+
+.service-process-strip__heading {
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: #f6f7f9;
+}
+
+.service-process-strip__text {
+    max-width: 280px;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.88rem, 1.35vw, 0.96rem);
+    font-weight: 500;
+    line-height: 1.55;
+    color: #f6f7f9;
+}
+
+
+/* ---------- Service Process Responsive ---------- */
+@media (max-width: 760px) {
+    .service-process-strip__inner {
+        grid-template-columns: 1fr;
+        width: min(520px, calc(100% - 32px));
+        padding: 42px 0;
+        gap: 34px;
+    }
+
+    .service-process-strip__text {
+        max-width: 340px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-process-strip__item {
+        transition: none;
+    }
+}

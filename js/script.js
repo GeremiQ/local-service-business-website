@@ -610,3 +610,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+/* ========== SERVICE PROCESS SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const serviceProcess = document.querySelector('[data-service-process]');
+
+    if (!serviceProcess) {
+        return;
+    }
+
+    const revealServiceProcess = () => {
+        serviceProcess.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealServiceProcess();
+        return;
+    }
+
+    const serviceProcessObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                revealServiceProcess();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.28
+    });
+
+    serviceProcessObserver.observe(serviceProcess);
+});
