@@ -416,3 +416,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     aboutObserver.observe(aboutSection);
 });
+
+
+/* ========== CONTACT SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const contactSection = document.querySelector('[data-contact-section]');
+
+    if (!contactSection) {
+        return;
+    }
+
+    const revealContactSection = () => {
+        contactSection.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealContactSection();
+        return;
+    }
+
+    const contactObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                revealContactSection();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.24
+    });
+
+    contactObserver.observe(contactSection);
+});
