@@ -2347,6 +2347,9 @@ img {
 /* ---------- Service Process Shell ---------- */
 .service-process-strip {
     background-color: #bb8b37;
+    background-image: url('../images/texture/texture-12.webp');
+    background-repeat: repeat;
+    background-size: 500px;
     color: #f6f7f9;
 }
 
