@@ -642,3 +642,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     serviceProcessObserver.observe(serviceProcess);
 });
+
+
+/* ========== SERVICE FAQ SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const faqSection = document.querySelector('[data-faq-section]');
+
+    if (!faqSection) {
+        return;
+    }
+
+    const faqToggles = faqSection.querySelectorAll('[data-faq-toggle]');
+
+    const setFaqState = (toggle, shouldOpen) => {
+        const faqItem = toggle.closest('.service-faq-item');
+        const answer = faqItem.querySelector('[data-faq-answer]');
+
+        toggle.setAttribute('aria-expanded', String(shouldOpen));
+        faqItem.classList.toggle('is-open', shouldOpen);
+
+        if (shouldOpen) {
+            answer.style.height = `${answer.scrollHeight}px`;
+        } else {
+            answer.style.height = `${answer.scrollHeight}px`;
+            window.requestAnimationFrame(() => {
+                answer.style.height = '0px';
+            });
+        }
+    };
+
+    faqToggles.forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+            const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+            setFaqState(toggle, !isOpen);
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        faqToggles.forEach((toggle) => {
+            if (toggle.getAttribute('aria-expanded') === 'true') {
+                const answer = toggle.closest('.service-faq-item').querySelector('[data-faq-answer]');
+                answer.style.height = `${answer.scrollHeight}px`;
+            }
+        });
+    });
+});
