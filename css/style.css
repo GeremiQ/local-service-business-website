@@ -533,7 +533,10 @@ img {
 
 /* ---------- Trust Strip Shell ---------- */
 .trust-strip {
-    background-color: #244584;
+    background-color: #14213d;
+    background-image: url('../images/texture/texture-1.webp');
+    background-repeat: repeat;
+    background-size: 500px;
     color: #f6f7f9;
 }
 
