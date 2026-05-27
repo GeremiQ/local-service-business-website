@@ -720,3 +720,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     serviceCtaObserver.observe(serviceCta);
 });
+
+
+/* ========== CONTACT FORM SECTION ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const contactPageSection = document.querySelector('[data-contact-page-section]');
+
+    if (!contactPageSection) {
+        return;
+    }
+
+    const revealContactPageInfo = () => {
+        contactPageSection.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealContactPageInfo();
+        return;
+    }
+
+    const contactPageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                revealContactPageInfo();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.24
+    });
+
+    contactPageObserver.observe(contactPageSection);
+});
