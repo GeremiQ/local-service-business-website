@@ -1790,6 +1790,10 @@ img {
     background-image: url('../images/service-4/hero.webp');
 }
 
+.service-hero--contact {
+    background-image: url('../images/contact/hero.webp');
+}
+
 .service-hero__overlay {
     position: absolute;
     inset: 0;
