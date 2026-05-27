@@ -754,6 +754,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    const contactPageInfo = contactPageSection.querySelector('.contact-page-section__info');
+
     const revealContactPageInfo = () => {
         contactPageSection.classList.add('is-visible');
     };
@@ -774,5 +776,5 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.24
     });
 
-    contactPageObserver.observe(contactPageSection);
+    contactPageObserver.observe(contactPageInfo || contactPageSection);
 });
