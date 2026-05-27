@@ -1563,12 +1563,12 @@ img {
 }
 
 .site-footer__logo {
-    width: clamp(58px, 6vw, 76px);
+    width: clamp(70px, 7vw, 92px);
     height: auto;
 }
 
 .site-footer__business-name {
-    margin-top: 14px;
+    margin-top: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(1rem, 1.6vw, 1.14rem);
     font-weight: 800;
@@ -1713,7 +1713,8 @@ img {
 @media (max-width: 900px) {
     .site-footer__main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 40px 64px;
+        column-gap: clamp(120px, 18vw, 220px);
+        row-gap: 40px;
     }
 
     .site-footer__brand {
@@ -1722,11 +1723,13 @@ img {
     }
 
     .site-footer__links {
-        justify-self: end;
+        justify-self: start;
+        margin-left: clamp(28px, 5vw, 58px);
     }
 
     .site-footer__contact {
-        justify-self: start;
+        justify-self: end;
+        margin-right: clamp(28px, 5vw, 58px);
     }
 }
 
@@ -1748,6 +1751,8 @@ img {
     .site-footer__links,
     .site-footer__contact {
         justify-self: stretch;
+        margin-right: 0;
+        margin-left: 0;
     }
 
     .site-footer__icons {
