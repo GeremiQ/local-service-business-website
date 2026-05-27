@@ -216,15 +216,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const normalizeIndex = () => {
-        if (currentIndex >= cardCount * 2) {
+        while (currentIndex >= cardCount * 2) {
             currentIndex -= cardCount;
             setTrackPosition(currentIndex, false);
         }
 
-        if (currentIndex < cardCount) {
+        while (currentIndex < cardCount) {
             currentIndex += cardCount;
             setTrackPosition(currentIndex, false);
         }
+
+        updateDots();
     };
 
     const goToIndex = (index, shouldAnimate = true) => {
@@ -234,11 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const goToNext = () => {
+        normalizeIndex();
         goToIndex(currentIndex + slideStep);
     };
 
     const startAutoplay = () => {
         window.clearInterval(autoplayTimer);
+
+        if (document.hidden) {
+            autoplayTimer = null;
+            return;
+        }
+
         autoplayTimer = window.setInterval(goToNext, autoplayDelay);
     };
 
@@ -384,6 +393,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isDragging) {
             startAutoplay();
         }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopAutoplay();
+            return;
+        }
+
+        isDragging = false;
+        dragAxis = null;
+        viewport.classList.remove('is-dragging');
+        track.classList.remove('is-dragging');
+        normalizeIndex();
+        syncCarousel();
+        startAutoplay();
     });
 
     window.addEventListener('resize', syncCarousel);
