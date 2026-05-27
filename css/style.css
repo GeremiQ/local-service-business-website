@@ -1110,7 +1110,7 @@ img {
 .testimonial-card {
     display: flex;
     flex-direction: column;
-    min-height: 330px;
+    min-height: 300px;
     padding: clamp(24px, 2.7vw, 30px);
     border-radius: 22px;
     background-color: #eceef2;
@@ -1130,7 +1130,7 @@ img {
 
 .testimonial-card__rating {
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 2px;
@@ -1147,8 +1147,8 @@ img {
 }
 
 .testimonial-card__client {
-    margin-top: auto;
-    padding-top: 28px;
+    margin-top: 30px;
+    padding-top: 0;
 }
 
 .testimonial-card__name {
@@ -1176,7 +1176,7 @@ img {
     }
 
     .testimonial-card {
-        min-height: 285px;
+        min-height: 270px;
     }
 }
 
