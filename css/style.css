@@ -2880,6 +2880,11 @@ img {
     resize: vertical;
 }
 
+.contact-page-section__field input::placeholder,
+.contact-page-section__field textarea::placeholder {
+    color: rgba(35, 39, 46, 0.44);
+}
+
 .contact-page-section__field input:focus,
 .contact-page-section__field select:focus,
 .contact-page-section__field textarea:focus {
