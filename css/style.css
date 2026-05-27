@@ -1778,6 +1778,18 @@ img {
     background-image: url('../images/service-1/hero.webp');
 }
 
+.service-hero--deep-cleaning {
+    background-image: url('../images/service-2/hero.webp');
+}
+
+.service-hero--office-cleaning {
+    background-image: url('../images/service-3/hero.webp');
+}
+
+.service-hero--move-cleaning {
+    background-image: url('../images/service-4/hero.webp');
+}
+
 .service-hero__overlay {
     position: absolute;
     inset: 0;
