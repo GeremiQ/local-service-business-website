@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
 <head>
-
     <!-- Basic -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,22 +27,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Preload hero image -->
-    <link rel="preload" as="image" href="/images/service-2/hero.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/service-2/hero.webp" type="image/webp" fetchpriority="high">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="/images/logo/favicon.webp">
-
 </head>
 
-
-
-
 <body>
-
-
     <!-- ========== SITE HEADER ========== -->
     <header class="site-header" data-site-header>
         <div class="site-header__inner">
@@ -69,12 +59,12 @@
             </button>
         </div>
 
-        <div class="site-header__mobile-menu" id="mobile-menu" data-mobile-menu>
+        <nav class="site-header__mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
             <a class="site-header__mobile-link" href="/index.html#about" data-nav-link>About</a>
             <a class="site-header__mobile-link" href="/index.html#services" data-nav-link>Services</a>
             <a class="site-header__mobile-link" href="/index.html#contact" data-nav-link>Contact</a>
             <a class="site-header__mobile-cta" href="/index.html#contact">Request a Quote</a>
-        </div>
+        </nav>
     </header>
     <!-- ========== END SITE HEADER ========== -->
 
@@ -90,7 +80,7 @@
             </div>
 
             <a class="service-hero__return-link" href="/index.html">
-                <span aria-hidden="true">←</span>
+                <span aria-hidden="true">&larr;</span>
                 Return to Homepage
             </a>
         </section>
@@ -136,7 +126,7 @@
                 </div>
 
                 <div class="service-overview-section__panel">
-                    <h2 class="service-overview-section__title">What’s Included</h2>
+                    <h2 class="service-overview-section__title">What&rsquo;s Included</h2>
                     <ul class="service-overview-section__list">
                         <li><svg class="service-overview-section__check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7" /></svg><span>Detailed surface scrubbing</span></li>
                         <li><svg class="service-overview-section__check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7" /></svg><span>Baseboard and trim cleaning</span></li>
@@ -168,7 +158,7 @@
                 </div>
             </div>
             <div class="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Cleaning results gallery" data-gallery-lightbox hidden>
-                <button class="gallery-lightbox__close" type="button" aria-label="Close gallery" data-gallery-close>×</button>
+                <button class="gallery-lightbox__close" type="button" aria-label="Close gallery" data-gallery-close>&times;</button>
                 <button class="gallery-lightbox__control gallery-lightbox__control--prev" type="button" aria-label="Previous image" data-gallery-prev><svg class="gallery-lightbox__control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg></button>
                 <img class="gallery-lightbox__image" src="" alt="Expanded cleaning result" data-gallery-image width="1200" height="900" decoding="async">
                 <button class="gallery-lightbox__control gallery-lightbox__control--next" type="button" aria-label="Next image" data-gallery-next><svg class="gallery-lightbox__control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg></button>
@@ -218,7 +208,7 @@
         </section>
         <!-- ========== END SERVICE CTA SECTION ========== -->
     </main>
-    <!-- ========== END SERVICE HERO SECTION ========== -->
+    <!-- ========== END MAIN CONTENT ========== -->
 
 
     <!-- ========== FOOTER SECTION ========== -->
@@ -234,7 +224,6 @@
     </footer>
     <!-- ========== END FOOTER SECTION ========== -->
 
-
-<script src="/js/script.js"></script>
+    <script src="/js/script.js" defer></script>
 </body>
 </html>
