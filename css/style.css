@@ -1505,6 +1505,10 @@ img {
     height: clamp(320px, 42vw, 450px);
 }
 
+.location-section__map iframe:not([src]) {
+    background-color: #dfe4ea;
+}
+
 
 /* ---------- Location Responsive ---------- */
 @media (max-width: 640px) {

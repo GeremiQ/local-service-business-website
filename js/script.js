@@ -23,6 +23,7 @@ const observeReveal = (target, reveal, options = {}) => {
             }
         });
     }, {
+        rootMargin: options.rootMargin ?? '0px',
         threshold: options.threshold ?? 0.24
     });
 
@@ -721,4 +722,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     observeReveal(contactPageInfo || contactPageSection, revealContactPageInfo);
+});
+
+
+/* ========== LOCATION MAP ========== */
+document.addEventListener('DOMContentLoaded', () => {
+    const mapFrame = document.querySelector('[data-map-frame]');
+
+    if (!mapFrame) {
+        return;
+    }
+
+    const loadMap = () => {
+        if (!mapFrame.hasAttribute('src')) {
+            mapFrame.src = mapFrame.dataset.mapSrc;
+        }
+    };
+
+    observeReveal(mapFrame, loadMap, {
+        rootMargin: '640px 0px',
+        threshold: 0
+    });
 });
