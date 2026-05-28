@@ -10,20 +10,39 @@
 }
 
 
+/* ---------- Design Tokens ---------- */
+:root {
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --color-surface: #f6f7f9;
+    --color-ink: #23272e;
+    --color-accent: #c79a3b;
+    --texture-page: url('../images/texture/texture-1.webp');
+    --texture-card: url('../images/texture/texture-11.webp');
+    --texture-process: url('../images/texture/texture-12.webp');
+}
+
+
 /* ---------- Smooth Scroll ---------- */
 html {
     scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 
 /* ---------- Body ---------- */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f6f7f9;
-    background-image: url('../images/texture/texture-1.webp');
+    font-family: var(--font-body);
+    background-color: var(--color-surface);
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 body.is-lightbox-open {
@@ -38,7 +57,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
 }
 
 
@@ -67,7 +86,7 @@ img {
     left: 0;
     z-index: 1000;
     width: 100%;
-    color: #f6f7f9;
+    color: var(--color-surface);
     background-color: transparent;
     transition:
         background-color 260ms ease,
@@ -78,10 +97,10 @@ img {
 
 .site-header.is-scrolled,
 .site-header.is-menu-open {
-    color: #23272e;
-    background-color: #f6f7f9;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
     background-image:
-        url('../images/texture/texture-1.webp'),
+        var(--texture-page),
         linear-gradient(rgba(246, 247, 249, 0.48), rgba(246, 247, 249, 0.48));
     background-repeat: repeat;
     background-size: 500px, auto;
@@ -140,7 +159,7 @@ img {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0;
@@ -166,7 +185,7 @@ img {
     left: 0;
     height: 2px;
     content: "";
-    background-color: #c79a3b;
+    background-color: var(--color-accent);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 220ms ease;
@@ -196,12 +215,12 @@ img {
     padding: 0 22px;
     border: 1px solid rgba(199, 154, 59, 0.82);
     border-radius: 999px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0;
-    color: #23272e;
-    background-color: #c79a3b;
+    color: var(--color-ink);
+    background-color: var(--color-accent);
     box-shadow: 0 10px 24px rgba(35, 39, 46, 0.14);
     transition:
         transform 180ms ease,
@@ -411,18 +430,18 @@ img {
     justify-items: center;
     width: min(100%, 820px);
     text-align: center;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .hero-section__title {
     display: grid;
     gap: 0.08em;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(3.4rem, 8vw, 7.4rem);
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: 0;
-    color: #f6f7f9;
+    color: var(--color-surface);
     text-shadow: 0 10px 34px rgba(0, 0, 0, 0.56);
 }
 
@@ -433,11 +452,11 @@ img {
 .hero-section__text {
     max-width: 660px;
     margin-top: clamp(22px, 4vw, 32px);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 2vw, 1.22rem);
     font-weight: 500;
     line-height: 1.7;
-    color: #f6f7f9;
+    color: var(--color-surface);
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.48);
 }
 
@@ -450,12 +469,12 @@ img {
     padding: 0 28px;
     border: 1px solid rgba(199, 154, 59, 0.86);
     border-radius: 999px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 0;
-    color: #23272e;
-    background-color: #c79a3b;
+    color: var(--color-ink);
+    background-color: var(--color-accent);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.26);
     transition:
         transform 180ms ease,
@@ -535,10 +554,10 @@ img {
 /* ---------- Trust Strip Shell ---------- */
 .trust-strip {
     background-color: #14213d;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .trust-strip__inner {
@@ -583,18 +602,18 @@ img {
 .trust-strip__icon {
     width: clamp(24px, 3vw, 34px);
     height: clamp(24px, 3vw, 34px);
-    color: #f6f7f9;
+    color: var(--color-surface);
     fill: currentColor;
     filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.18));
 }
 
 .trust-strip__text {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.86rem, 1.5vw, 1rem);
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: 0;
-    color: #f6f7f9;
+    color: var(--color-surface);
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
 }
 
@@ -655,11 +674,11 @@ img {
 
 /* ---------- Services Shell ---------- */
 .services-section {
-    background-color: #f6f7f9;
-    background-image: url('../images/texture/texture-1.webp');
+    background-color: var(--color-surface);
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .services-section__inner {
@@ -670,13 +689,13 @@ img {
 
 .services-section__title {
     margin-bottom: clamp(34px, 5vw, 54px);
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2.1rem, 4vw, 3.4rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0;
     text-align: center;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 
@@ -734,7 +753,7 @@ img {
 
 .services-carousel__dot:hover,
 .services-carousel__dot.is-active {
-    background-color: #c79a3b;
+    background-color: var(--color-accent);
 }
 
 .services-carousel__dot.is-active {
@@ -756,9 +775,9 @@ img {
     min-height: 470px;
     padding: clamp(24px, 3vw, 32px);
     border-radius: 22px;
-    color: #23272e;
+    color: var(--color-ink);
     background-color: #eceef2;
-    background-image: url('../images/texture/texture-11.webp');
+    background-image: var(--texture-card);
     background-repeat: repeat;
     background-size: 420px;
     box-shadow: 0 18px 42px rgba(35, 39, 46, 0.11);
@@ -786,21 +805,21 @@ img {
 }
 
 .service-card__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(1.35rem, 2vw, 1.75rem);
     font-weight: 800;
     line-height: 1.12;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-card__description {
     margin-top: 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.98rem;
     font-weight: 500;
     line-height: 1.65;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-card__features {
@@ -808,15 +827,15 @@ img {
     gap: 10px;
     margin-top: 22px;
     padding-left: 18px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.94rem;
     font-weight: 600;
     line-height: 1.45;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-card__features li::marker {
-    color: #c79a3b;
+    color: var(--color-accent);
 }
 
 .service-card__actions {
@@ -834,12 +853,12 @@ img {
     padding: 0 22px;
     border: 1px solid rgba(199, 154, 59, 0.84);
     border-radius: 999px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0;
-    color: #23272e;
-    background-color: #c79a3b;
+    color: var(--color-ink);
+    background-color: var(--color-accent);
     box-shadow: 0 10px 22px rgba(35, 39, 46, 0.13);
     transition:
         transform 180ms ease,
@@ -858,13 +877,13 @@ img {
 
 .service-card__link {
     display: inline;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     font-weight: 700;
     line-height: 1.4;
-    color: #23272e;
+    color: var(--color-ink);
     text-decoration: underline;
-    text-decoration-color: #c79a3b;
+    text-decoration-color: var(--color-accent);
     text-decoration-thickness: 2px;
     text-underline-offset: 5px;
     transition:
@@ -955,10 +974,10 @@ img {
 .about-section {
     overflow: hidden;
     background-color: #f0f7fe;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .about-section__inner {
@@ -992,21 +1011,21 @@ img {
 }
 
 .about-section__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2.1rem, 4vw, 3.4rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .about-section__text {
     margin-top: clamp(22px, 3vw, 30px);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.7vw, 1.14rem);
     font-weight: 500;
     line-height: 1.82;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 
@@ -1077,10 +1096,10 @@ img {
 /* ---------- Testimonials Shell ---------- */
 .testimonials-section {
     background-color: #f9f6ed;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .testimonials-section__inner {
@@ -1091,13 +1110,13 @@ img {
 
 .testimonials-section__title {
     margin-bottom: clamp(34px, 5vw, 54px);
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 4vw, 3.25rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: 0;
     text-align: center;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 
@@ -1115,7 +1134,7 @@ img {
     padding: clamp(24px, 2.7vw, 30px);
     border-radius: 22px;
     background-color: #eceef2;
-    background-image: url('../images/texture/texture-11.webp');
+    background-image: var(--texture-card);
     background-repeat: repeat;
     background-size: 420px;
     box-shadow: 0 18px 42px rgba(35, 39, 46, 0.11);
@@ -1130,21 +1149,21 @@ img {
 }
 
 .testimonial-card__rating {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.2rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 2px;
-    color: #c79a3b;
+    color: var(--color-accent);
 }
 
 .testimonial-card__text {
     margin-top: 22px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.96rem;
     font-weight: 500;
     line-height: 1.7;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .testimonial-card__client {
@@ -1153,16 +1172,16 @@ img {
 }
 
 .testimonial-card__name {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 800;
     line-height: 1.25;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .testimonial-card__source {
     margin-top: 5px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.82rem;
     font-weight: 600;
     line-height: 1.35;
@@ -1220,11 +1239,11 @@ img {
 /* ---------- Contact Shell ---------- */
 .contact-section {
     overflow: hidden;
-    background-color: #f6f7f9;
-    background-image: url('../images/texture/texture-1.webp');
+    background-color: var(--color-surface);
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-section__inner {
@@ -1297,12 +1316,12 @@ img {
 }
 
 .contact-section__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2.1rem, 4vw, 3.4rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-section__list {
@@ -1323,17 +1342,17 @@ img {
 .contact-section__icon {
     width: clamp(24px, 3vw, 32px);
     height: clamp(24px, 3vw, 32px);
-    color: #c79a3b;
+    color: var(--color-accent);
     fill: currentColor;
 }
 
 .contact-section__item-text {
     min-width: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.96rem, 1.6vw, 1.08rem);
     font-weight: 600;
     line-height: 1.45;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-section__item-text span {
@@ -1348,11 +1367,11 @@ img {
     position: relative;
     display: inline-flex;
     margin-top: clamp(28px, 4vw, 38px);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.94rem, 1.5vw, 1.04rem);
     font-weight: 800;
     line-height: 1.45;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-section__link::after {
@@ -1362,7 +1381,7 @@ img {
     left: 0;
     height: 2px;
     content: "";
-    background-color: #c79a3b;
+    background-color: var(--color-accent);
     transform: scaleX(1);
     transform-origin: left center;
     transition:
@@ -1431,10 +1450,10 @@ img {
 /* ---------- Location Shell ---------- */
 .location-section {
     background-color: #f9f6ed;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .location-section__inner {
@@ -1445,21 +1464,21 @@ img {
 }
 
 .location-section__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2.1rem, 4vw, 3.4rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .location-section__text {
     margin-top: 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.7vw, 1.14rem);
     font-weight: 600;
     line-height: 1.55;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 
@@ -1520,10 +1539,10 @@ img {
 /* ---------- Footer Shell ---------- */
 .site-footer {
     background-color: #14213d;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .site-footer__inner {
@@ -1570,11 +1589,11 @@ img {
 
 .site-footer__business-name {
     margin-top: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(1rem, 1.6vw, 1.14rem);
     font-weight: 800;
     line-height: 1.3;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 
@@ -1584,11 +1603,11 @@ img {
 }
 
 .site-footer__heading {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 1.08rem;
     font-weight: 800;
     line-height: 1.2;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .site-footer__nav-list {
@@ -1596,22 +1615,22 @@ img {
     gap: 12px;
     margin-top: 18px;
     padding-left: 18px;
-    font-family: 'Inter', sans-serif;
-    color: #f6f7f9;
+    font-family: var(--font-body);
+    color: var(--color-surface);
 }
 
 .site-footer__nav-list li::marker {
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .site-footer__nav-link {
     position: relative;
     display: inline-flex;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.96rem;
     font-weight: 600;
     line-height: 1.45;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .site-footer__nav-link::after {
@@ -1621,7 +1640,7 @@ img {
     left: 0;
     height: 2px;
     content: "";
-    background-color: #f6f7f9;
+    background-color: var(--color-surface);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 220ms ease;
@@ -1663,7 +1682,7 @@ img {
 }
 
 .site-footer__icon-link:hover {
-    color: #f6f7f9;
+    color: var(--color-surface);
     transform: translateY(-2px) scale(1.08);
 }
 
@@ -1688,15 +1707,15 @@ img {
 }
 
 .site-footer__copyright p {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     font-weight: 500;
     line-height: 1.6;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .site-footer__copyright a {
-    color: #f6f7f9;
+    color: var(--color-surface);
     transition: color 180ms ease;
 }
 
@@ -1824,27 +1843,27 @@ img {
     justify-items: center;
     width: min(100%, 860px);
     text-align: center;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .service-hero__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(3rem, 7vw, 6.6rem);
     font-weight: 800;
     line-height: 0.96;
     letter-spacing: 0;
-    color: #f6f7f9;
+    color: var(--color-surface);
     text-shadow: 0 10px 34px rgba(0, 0, 0, 0.58);
 }
 
 .service-hero__text {
     max-width: 680px;
     margin-top: clamp(22px, 4vw, 32px);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 2vw, 1.22rem);
     font-weight: 500;
     line-height: 1.7;
-    color: #f6f7f9;
+    color: var(--color-surface);
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
 }
 
@@ -1859,11 +1878,11 @@ img {
     gap: 8px;
     width: fit-content;
     margin: 0 auto;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.94rem, 1.5vw, 1.05rem);
     font-weight: 800;
     line-height: 1.45;
-    color: #f6f7f9;
+    color: var(--color-surface);
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.46);
 }
 
@@ -1874,7 +1893,7 @@ img {
     left: 0;
     height: 2px;
     content: "";
-    background-color: #f6f7f9;
+    background-color: var(--color-surface);
     transform: scaleX(1);
     transform-origin: left center;
     transition:
@@ -1935,10 +1954,10 @@ img {
 /* ---------- Service Benefits Shell ---------- */
 .service-benefits-strip {
     background-color: #14213d;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .service-benefits-strip__inner {
@@ -1985,7 +2004,7 @@ img {
 .service-benefits-strip__icon {
     width: clamp(32px, 4vw, 42px);
     height: clamp(32px, 4vw, 42px);
-    color: #f6f7f9;
+    color: var(--color-surface);
     fill: none;
     stroke: currentColor;
     stroke-width: 1.8;
@@ -1996,21 +2015,21 @@ img {
 
 .service-benefits-strip__heading {
     margin-top: 4px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(0.88rem, 1.4vw, 1rem);
     font-weight: 800;
     line-height: 1.25;
     letter-spacing: 0;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .service-benefits-strip__text {
     max-width: 230px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.84rem, 1.25vw, 0.94rem);
     font-weight: 500;
     line-height: 1.5;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 
@@ -2048,11 +2067,11 @@ img {
 
 /* ---------- Service Overview Shell ---------- */
 .service-overview-section {
-    background-color: #f6f7f9;
-    background-image: url('../images/texture/texture-1.webp');
+    background-color: var(--color-surface);
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-overview-section__inner {
@@ -2072,22 +2091,22 @@ img {
 }
 
 .service-overview-section__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 3.6vw, 3.2rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-overview-section__text {
     max-width: 560px;
     margin-top: clamp(22px, 3vw, 30px);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.7vw, 1.12rem);
     font-weight: 500;
     line-height: 1.82;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 
@@ -2106,11 +2125,11 @@ img {
     align-items: center;
     gap: 12px;
     text-align: left;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.96rem, 1.45vw, 1.06rem);
     font-weight: 600;
     line-height: 1.45;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-overview-section__check {
@@ -2157,10 +2176,10 @@ img {
 /* ---------- Service Gallery Shell ---------- */
 .service-gallery-section {
     background-color: #f0f7fe;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-gallery-section__inner {
@@ -2171,22 +2190,22 @@ img {
 }
 
 .service-gallery-section__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 3.6vw, 3.2rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-gallery-section__text {
     max-width: 620px;
     margin: 18px auto 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.7vw, 1.12rem);
     font-weight: 500;
     line-height: 1.65;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 
@@ -2269,7 +2288,7 @@ img {
     justify-content: center;
     border: 1px solid rgba(246, 247, 249, 0.22);
     border-radius: 999px;
-    color: #f6f7f9;
+    color: var(--color-surface);
     background-color: rgba(246, 247, 249, 0.1);
     cursor: pointer;
     transition:
@@ -2372,10 +2391,10 @@ img {
 /* ---------- Service Process Shell ---------- */
 .service-process-strip {
     background-color: #bb8b37;
-    background-image: url('../images/texture/texture-12.webp');
+    background-image: var(--texture-process);
     background-repeat: repeat;
     background-size: 500px;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .service-process-strip__inner {
@@ -2422,32 +2441,32 @@ img {
     width: clamp(46px, 5vw, 56px);
     height: clamp(46px, 5vw, 56px);
     border-radius: 999px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(1.1rem, 2vw, 1.35rem);
     font-weight: 800;
     line-height: 1;
-    color: #f6f7f9;
+    color: var(--color-surface);
     background-color: #351e13;
     box-shadow: 0 10px 24px rgba(53, 30, 19, 0.24);
 }
 
 .service-process-strip__heading {
     margin-top: 5px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(0.95rem, 1.5vw, 1.08rem);
     font-weight: 800;
     line-height: 1.25;
     letter-spacing: 0;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 .service-process-strip__text {
     max-width: 280px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.88rem, 1.35vw, 0.96rem);
     font-weight: 500;
     line-height: 1.55;
-    color: #f6f7f9;
+    color: var(--color-surface);
 }
 
 
@@ -2477,11 +2496,11 @@ img {
 
 /* ---------- Service FAQ Shell ---------- */
 .service-faq-section {
-    background-color: #f6f7f9;
-    background-image: url('../images/texture/texture-1.webp');
+    background-color: var(--color-surface);
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-faq-section__inner {
@@ -2492,22 +2511,22 @@ img {
 }
 
 .service-faq-section__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 3.6vw, 3.2rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-faq-section__text {
     max-width: 560px;
     margin: 18px auto 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.6vw, 1.1rem);
     font-weight: 500;
     line-height: 1.62;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-faq-section__list {
@@ -2533,12 +2552,12 @@ img {
     min-height: 66px;
     padding: 18px 22px;
     border: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.98rem, 1.5vw, 1.08rem);
     font-weight: 800;
     line-height: 1.35;
     text-align: left;
-    color: #23272e;
+    color: var(--color-ink);
     background-color: #eceef2;
     cursor: pointer;
     transition: background-color 200ms ease;
@@ -2571,7 +2590,7 @@ img {
     height: 2px;
     content: "";
     border-radius: 999px;
-    background-color: #23272e;
+    background-color: var(--color-ink);
     transform: translate(-50%, -50%);
     transition: transform 200ms ease;
 }
@@ -2591,7 +2610,7 @@ img {
 .service-faq-item__answer {
     height: 0;
     overflow: hidden;
-    background-color: #f6f7f9;
+    background-color: var(--color-surface);
     opacity: 0;
     transition:
         height 260ms ease,
@@ -2604,12 +2623,12 @@ img {
 
 .service-faq-item__answer p {
     padding: 20px 22px 24px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.95rem, 1.45vw, 1.04rem);
     font-weight: 500;
     line-height: 1.7;
     text-align: left;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 
@@ -2638,10 +2657,10 @@ img {
 .service-cta-section {
     overflow: hidden;
     background-color: #f0f7fe;
-    background-image: url('../images/texture/texture-1.webp');
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-cta-section__inner {
@@ -2690,22 +2709,22 @@ img {
 }
 
 .service-cta-section__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2.2rem, 4.4vw, 3.8rem);
     font-weight: 800;
     line-height: 1.03;
     letter-spacing: 0;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-cta-section__text {
     max-width: 560px;
     margin-top: clamp(22px, 3vw, 30px);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.7vw, 1.14rem);
     font-weight: 500;
     line-height: 1.72;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .service-cta-section__button {
@@ -2717,12 +2736,12 @@ img {
     padding: 0 28px;
     border: 1px solid rgba(199, 154, 59, 0.86);
     border-radius: 999px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.96rem;
     font-weight: 800;
     letter-spacing: 0;
-    color: #23272e;
-    background-color: #c79a3b;
+    color: var(--color-ink);
+    background-color: var(--color-accent);
     box-shadow: 0 14px 30px rgba(35, 39, 46, 0.14);
     transition:
         opacity 700ms ease,
@@ -2817,11 +2836,11 @@ img {
 
 /* ---------- Contact Page Shell ---------- */
 .contact-page-section {
-    background-color: #f6f7f9;
-    background-image: url('../images/texture/texture-1.webp');
+    background-color: var(--color-surface);
+    background-image: var(--texture-page);
     background-repeat: repeat;
     background-size: 500px;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-page-section__inner {
@@ -2840,7 +2859,7 @@ img {
     padding: clamp(24px, 4vw, 36px);
     border-radius: 22px;
     background-color: #eceef2;
-    background-image: url('../images/texture/texture-11.webp');
+    background-image: var(--texture-card);
     background-repeat: repeat;
     background-size: 420px;
     box-shadow: 0 18px 42px rgba(35, 39, 46, 0.11);
@@ -2858,11 +2877,11 @@ img {
 }
 
 .contact-page-section__field label {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.92rem;
     font-weight: 800;
     line-height: 1.3;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-page-section__field input,
@@ -2872,11 +2891,11 @@ img {
     border: 1px solid rgba(35, 39, 46, 0.16);
     border-radius: 12px;
     padding: 14px 15px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.35;
-    color: #23272e;
+    color: var(--color-ink);
     background-color: rgba(246, 247, 249, 0.92);
     transition:
         border-color 180ms ease,
@@ -2898,8 +2917,8 @@ img {
 .contact-page-section__field select:focus,
 .contact-page-section__field textarea:focus {
     outline: none;
-    border-color: #c79a3b;
-    background-color: #f6f7f9;
+    border-color: var(--color-accent);
+    background-color: var(--color-surface);
     box-shadow: 0 0 0 4px rgba(199, 154, 59, 0.18);
 }
 
@@ -2913,11 +2932,11 @@ img {
     padding: 0 28px;
     border: 1px solid rgba(199, 154, 59, 0.86);
     border-radius: 999px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.96rem;
     font-weight: 800;
-    color: #23272e;
-    background-color: #c79a3b;
+    color: var(--color-ink);
+    background-color: var(--color-accent);
     cursor: pointer;
     box-shadow: 0 14px 30px rgba(35, 39, 46, 0.14);
     transition:
@@ -2951,13 +2970,13 @@ img {
 
 .contact-page-section__title {
     justify-self: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2.1rem, 4vw, 3.4rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0;
     text-align: center;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-page-section__title,
@@ -2998,17 +3017,17 @@ img {
 .contact-page-section__icon {
     width: clamp(26px, 3vw, 34px);
     height: clamp(26px, 3vw, 34px);
-    color: #c79a3b;
+    color: var(--color-accent);
     fill: currentColor;
 }
 
 .contact-page-section__item-text {
     min-width: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.7vw, 1.12rem);
     font-weight: 600;
     line-height: 1.45;
-    color: #23272e;
+    color: var(--color-ink);
 }
 
 .contact-page-section__item-text span {
