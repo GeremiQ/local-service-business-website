@@ -30,6 +30,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="/images/homepage/hero-image.webp" fetchpriority="high">
+
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
 
@@ -48,7 +51,7 @@
     <header class="site-header" data-site-header>
         <div class="site-header__inner">
             <a class="site-header__logo-link" href="/index.html" aria-label="Haven Cleaning Services home">
-                <img class="site-header__logo" src="/images/logo/favicon.webp" alt="Haven Cleaning Services">
+                <img class="site-header__logo" src="/images/logo/favicon.webp" alt="Haven Cleaning Services" width="128" height="128" decoding="async" fetchpriority="high">
             </a>
 
             <nav class="site-header__nav" aria-label="Primary navigation" data-site-nav>
@@ -133,7 +136,7 @@
                     <div class="services-carousel__viewport" data-services-viewport>
                         <div class="services-carousel__track" data-services-track>
                             <article class="service-card">
-                                <img class="service-card__image" src="/images/service-1/hero.webp" alt="General cleaning service">
+                                <img class="service-card__image" src="/images/service-1/hero.webp" alt="General cleaning service" width="1600" height="1200" loading="lazy" decoding="async">
 
                                 <div class="service-card__content">
                                     <h3 class="service-card__title">General Cleaning</h3>
@@ -155,7 +158,7 @@
                             </article>
 
                             <article class="service-card">
-                                <img class="service-card__image" src="/images/service-2/hero.webp" alt="Deep cleaning service">
+                                <img class="service-card__image" src="/images/service-2/hero.webp" alt="Deep cleaning service" width="1600" height="1200" loading="lazy" decoding="async">
 
                                 <div class="service-card__content">
                                     <h3 class="service-card__title">Deep Cleaning</h3>
@@ -177,7 +180,7 @@
                             </article>
 
                             <article class="service-card">
-                                <img class="service-card__image" src="/images/service-3/hero.webp" alt="Office cleaning service">
+                                <img class="service-card__image" src="/images/service-3/hero.webp" alt="Office cleaning service" width="1600" height="1200" loading="lazy" decoding="async">
 
                                 <div class="service-card__content">
                                     <h3 class="service-card__title">Office Cleaning</h3>
@@ -199,7 +202,7 @@
                             </article>
 
                             <article class="service-card">
-                                <img class="service-card__image" src="/images/service-4/hero.webp" alt="Move in and move out cleaning service">
+                                <img class="service-card__image" src="/images/service-4/hero.webp" alt="Move in and move out cleaning service" width="1600" height="1200" loading="lazy" decoding="async">
 
                                 <div class="service-card__content">
                                     <h3 class="service-card__title">Move In/Move Out Cleaning</h3>
@@ -241,7 +244,7 @@
                 </div>
 
                 <div class="about-section__media" aria-hidden="true">
-                    <img class="about-section__image" src="/images/homepage/about-image.webp" alt="">
+                    <img class="about-section__image" src="/images/homepage/about-image.webp" alt="" width="1200" height="900" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
@@ -315,7 +318,7 @@
         <section class="contact-section" id="contact" aria-labelledby="contact-title" data-contact-section>
             <div class="contact-section__inner">
                 <div class="contact-section__media" aria-hidden="true">
-                    <img class="contact-section__image" src="/images/homepage/contact-image.webp" alt="">
+                    <img class="contact-section__image" src="/images/homepage/contact-image.webp" alt="" width="1200" height="900" loading="lazy" decoding="async">
                 </div>
 
                 <div class="contact-section__content">
@@ -382,7 +385,7 @@
             <div class="site-footer__main">
                 <div class="site-footer__brand">
                     <a class="site-footer__logo-link" href="/index.html" aria-label="Haven Cleaning Services home">
-                        <img class="site-footer__logo" src="/images/logo/logo.webp" alt="Haven Cleaning Services">
+                        <img class="site-footer__logo" src="/images/logo/logo.webp" alt="Haven Cleaning Services" width="240" height="240" loading="lazy" decoding="async">
                     </a>
                     <p class="site-footer__business-name">Haven Cleaning Services</p>
                 </div>

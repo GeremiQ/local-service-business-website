@@ -30,6 +30,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="/images/service-1/hero.webp" fetchpriority="high">
+
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
 
@@ -48,7 +51,7 @@
     <header class="site-header" data-site-header>
         <div class="site-header__inner">
             <a class="site-header__logo-link" href="/index.html" aria-label="Haven Cleaning Services home">
-                <img class="site-header__logo" src="/images/logo/favicon.webp" alt="Haven Cleaning Services">
+                <img class="site-header__logo" src="/images/logo/favicon.webp" alt="Haven Cleaning Services" width="128" height="128" decoding="async" fetchpriority="high">
             </a>
 
             <nav class="site-header__nav" aria-label="Primary navigation" data-site-nav>
@@ -222,22 +225,22 @@
 
                 <div class="service-gallery-section__grid">
                     <button class="service-gallery-section__item" type="button" data-gallery-trigger data-gallery-src="/images/service-1/gallery/image-1.webp" aria-label="View cleaning result image 1">
-                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-1.webp" alt="Professionally cleaned space result 1">
+                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-1.webp" alt="Professionally cleaned space result 1" width="1200" height="900" loading="lazy" decoding="async">
                     </button>
                     <button class="service-gallery-section__item" type="button" data-gallery-trigger data-gallery-src="/images/service-1/gallery/image-2.webp" aria-label="View cleaning result image 2">
-                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-2.webp" alt="Professionally cleaned space result 2">
+                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-2.webp" alt="Professionally cleaned space result 2" width="1200" height="900" loading="lazy" decoding="async">
                     </button>
                     <button class="service-gallery-section__item" type="button" data-gallery-trigger data-gallery-src="/images/service-1/gallery/image-3.webp" aria-label="View cleaning result image 3">
-                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-3.webp" alt="Professionally cleaned space result 3">
+                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-3.webp" alt="Professionally cleaned space result 3" width="1200" height="900" loading="lazy" decoding="async">
                     </button>
                     <button class="service-gallery-section__item" type="button" data-gallery-trigger data-gallery-src="/images/service-1/gallery/image-4.webp" aria-label="View cleaning result image 4">
-                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-4.webp" alt="Professionally cleaned space result 4">
+                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-4.webp" alt="Professionally cleaned space result 4" width="1200" height="900" loading="lazy" decoding="async">
                     </button>
                     <button class="service-gallery-section__item" type="button" data-gallery-trigger data-gallery-src="/images/service-1/gallery/image-5.webp" aria-label="View cleaning result image 5">
-                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-5.webp" alt="Professionally cleaned space result 5">
+                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-5.webp" alt="Professionally cleaned space result 5" width="1200" height="900" loading="lazy" decoding="async">
                     </button>
                     <button class="service-gallery-section__item" type="button" data-gallery-trigger data-gallery-src="/images/service-1/gallery/image-6.webp" aria-label="View cleaning result image 6">
-                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-6.webp" alt="Professionally cleaned space result 6">
+                        <img class="service-gallery-section__image" src="/images/service-1/gallery/image-6.webp" alt="Professionally cleaned space result 6" width="1200" height="900" loading="lazy" decoding="async">
                     </button>
                 </div>
             </div>
@@ -249,7 +252,7 @@
                         <path d="M15 5l-7 7 7 7" />
                     </svg>
                 </button>
-                <img class="gallery-lightbox__image" src="" alt="Expanded cleaning result" data-gallery-image>
+                <img class="gallery-lightbox__image" src="" alt="Expanded cleaning result" data-gallery-image width="1200" height="900" decoding="async">
                 <button class="gallery-lightbox__control gallery-lightbox__control--next" type="button" aria-label="Next image" data-gallery-next>
                     <svg class="gallery-lightbox__control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="M9 5l7 7-7 7" />
@@ -359,7 +362,7 @@
                 </div>
 
                 <div class="service-cta-section__media" aria-hidden="true">
-                    <img class="service-cta-section__image" src="/images/service-1/cta.webp" alt="">
+                    <img class="service-cta-section__image" src="/images/service-1/cta.webp" alt="" width="1200" height="900" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
@@ -374,7 +377,7 @@
             <div class="site-footer__main">
                 <div class="site-footer__brand">
                     <a class="site-footer__logo-link" href="/index.html" aria-label="Haven Cleaning Services home">
-                        <img class="site-footer__logo" src="/images/logo/logo.webp" alt="Haven Cleaning Services">
+                        <img class="site-footer__logo" src="/images/logo/logo.webp" alt="Haven Cleaning Services" width="240" height="240" loading="lazy" decoding="async">
                     </a>
                     <p class="site-footer__business-name">Haven Cleaning Services</p>
                 </div>
