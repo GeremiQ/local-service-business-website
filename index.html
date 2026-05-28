@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
 <head>
-
     <!-- Basic -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,22 +27,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Preload hero image -->
-    <link rel="preload" as="image" href="/images/homepage/hero-image.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/homepage/hero-image.webp" type="image/webp" fetchpriority="high">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="images/logo/favicon.webp">
-
+    <link rel="icon" type="image/webp" href="/images/logo/favicon.webp">
 </head>
 
-
-
-
 <body>
-
-
     <!-- ========== SITE HEADER ========== -->
     <header class="site-header" data-site-header>
         <div class="site-header__inner">
@@ -55,12 +45,12 @@
             </a>
 
             <nav class="site-header__nav" aria-label="Primary navigation" data-site-nav>
-                <a class="site-header__nav-link" href="/index.html#about" data-nav-link>About</a>
-                <a class="site-header__nav-link" href="/index.html#services" data-nav-link>Services</a>
-                <a class="site-header__nav-link" href="/index.html#contact" data-nav-link>Contact</a>
+                <a class="site-header__nav-link" href="#about" data-nav-link>About</a>
+                <a class="site-header__nav-link" href="#services" data-nav-link>Services</a>
+                <a class="site-header__nav-link" href="#contact" data-nav-link>Contact</a>
             </nav>
 
-            <a class="site-header__cta" href="/index.html#contact">Request a Quote</a>
+            <a class="site-header__cta" href="#contact">Request a Quote</a>
 
             <button class="site-header__menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
                 <span class="site-header__menu-line"></span>
@@ -69,12 +59,12 @@
             </button>
         </div>
 
-        <div class="site-header__mobile-menu" id="mobile-menu" data-mobile-menu>
-            <a class="site-header__mobile-link" href="/index.html#about" data-nav-link>About</a>
-            <a class="site-header__mobile-link" href="/index.html#services" data-nav-link>Services</a>
-            <a class="site-header__mobile-link" href="/index.html#contact" data-nav-link>Contact</a>
-            <a class="site-header__mobile-cta" href="/index.html#contact">Request a Quote</a>
-        </div>
+        <nav class="site-header__mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+            <a class="site-header__mobile-link" href="#about" data-nav-link>About</a>
+            <a class="site-header__mobile-link" href="#services" data-nav-link>Services</a>
+            <a class="site-header__mobile-link" href="#contact" data-nav-link>Contact</a>
+            <a class="site-header__mobile-cta" href="#contact">Request a Quote</a>
+        </nav>
     </header>
     <!-- ========== END SITE HEADER ========== -->
 
@@ -153,7 +143,7 @@
 
                                 <div class="service-card__actions">
                                     <a class="service-card__cta" href="#contact">Request a Quote</a>
-                                    <a class="service-card__link" href="html/service-1.html">Learn More About General Cleaning</a>
+                                    <a class="service-card__link" href="/html/service-1.html">Learn More About General Cleaning</a>
                                 </div>
                             </article>
 
@@ -175,7 +165,7 @@
 
                                 <div class="service-card__actions">
                                     <a class="service-card__cta" href="#contact">Request a Quote</a>
-                                    <a class="service-card__link" href="html/service-2.html">Learn More About Deep Cleaning</a>
+                                    <a class="service-card__link" href="/html/service-2.html">Learn More About Deep Cleaning</a>
                                 </div>
                             </article>
 
@@ -197,7 +187,7 @@
 
                                 <div class="service-card__actions">
                                     <a class="service-card__cta" href="#contact">Request a Quote</a>
-                                    <a class="service-card__link" href="html/service-3.html">Learn More About Office Cleaning</a>
+                                    <a class="service-card__link" href="/html/service-3.html">Learn More About Office Cleaning</a>
                                 </div>
                             </article>
 
@@ -219,7 +209,7 @@
 
                                 <div class="service-card__actions">
                                     <a class="service-card__cta" href="#contact">Request a Quote</a>
-                                    <a class="service-card__link" href="html/service-4.html">Learn More About Move In/Move Out Cleaning</a>
+                                    <a class="service-card__link" href="/html/service-4.html">Learn More About Move In/Move Out Cleaning</a>
                                 </div>
                             </article>
                         </div>
@@ -259,7 +249,7 @@
                 <div class="testimonials-section__grid">
                     <article class="testimonial-card">
                         <div class="testimonial-card__rating" aria-label="5 out of 5 stars">
-                            <span aria-hidden="true">★★★★★</span>
+                            <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                         </div>
                         <p class="testimonial-card__text">
                             The team was professional, punctual, and left my home spotless. Everything looked fresh and organized when they finished.
@@ -272,7 +262,7 @@
 
                     <article class="testimonial-card">
                         <div class="testimonial-card__rating" aria-label="5 out of 5 stars">
-                            <span aria-hidden="true">★★★★★</span>
+                            <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                         </div>
                         <p class="testimonial-card__text">
                             Excellent service from start to finish. The attention to detail really stood out, especially in the kitchen and bathrooms.
@@ -285,7 +275,7 @@
 
                     <article class="testimonial-card">
                         <div class="testimonial-card__rating" aria-label="5 out of 5 stars">
-                            <span aria-hidden="true">★★★★★</span>
+                            <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                         </div>
                         <p class="testimonial-card__text">
                             Reliable, friendly, and very thorough. Our office feels cleaner and more comfortable every week because of their work.
@@ -298,7 +288,7 @@
 
                     <article class="testimonial-card">
                         <div class="testimonial-card__rating" aria-label="5 out of 5 stars">
-                            <span aria-hidden="true">★★★★★</span>
+                            <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                         </div>
                         <p class="testimonial-card__text">
                             I booked a move-out cleaning and was genuinely impressed with the results. The place looked better than when I moved in.
@@ -376,7 +366,7 @@
         </section>
         <!-- ========== END LOCATION SECTION ========== -->
     </main>
-    <!-- ========== END HERO SECTION ========== -->
+    <!-- ========== END MAIN CONTENT ========== -->
 
 
     <!-- ========== FOOTER SECTION ========== -->
@@ -424,13 +414,12 @@
             </div>
 
             <div class="site-footer__copyright">
-                <p>© 2026 Haven Cleaning Services. All Rights Reserved. <a href="https://gqwebstudio.com" target="_blank" rel="noopener noreferrer">Built by GQ Web Studio.</a></p>
+                <p>&copy; 2026 Haven Cleaning Services. All Rights Reserved. <a href="https://gqwebstudio.com" target="_blank" rel="noopener noreferrer">Built by GQ Web Studio.</a></p>
             </div>
         </div>
     </footer>
     <!-- ========== END FOOTER SECTION ========== -->
 
-
-<script src="/js/script.js"></script>
+    <script src="/js/script.js" defer></script>
 </body>
 </html>
