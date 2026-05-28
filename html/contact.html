@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
 <head>
-
     <!-- Basic -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,22 +27,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Preload hero image -->
-    <link rel="preload" as="image" href="/images/contact/hero.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/contact/hero.webp" type="image/webp" fetchpriority="high">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="/images/logo/favicon.webp">
-
 </head>
 
-
-
-
 <body>
-
-
     <!-- ========== SITE HEADER ========== -->
     <header class="site-header" data-site-header>
         <div class="site-header__inner">
@@ -69,12 +59,12 @@
             </button>
         </div>
 
-        <div class="site-header__mobile-menu" id="mobile-menu" data-mobile-menu>
+        <nav class="site-header__mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
             <a class="site-header__mobile-link" href="/index.html#about" data-nav-link>About</a>
             <a class="site-header__mobile-link" href="/index.html#services" data-nav-link>Services</a>
             <a class="site-header__mobile-link" href="/index.html#contact" data-nav-link>Contact</a>
             <a class="site-header__mobile-cta" href="/index.html#contact">Request a Quote</a>
-        </div>
+        </nav>
     </header>
     <!-- ========== END SITE HEADER ========== -->
 
@@ -88,12 +78,12 @@
                 <h1 class="service-hero__title" id="contact-hero-title">Contact Haven Cleaning Services</h1>
 
                 <p class="service-hero__text">
-                    Tell us about your cleaning needs and we’ll help you schedule reliable service for a fresher, more comfortable space.
+                    Tell us about your cleaning needs and we&rsquo;ll help you schedule reliable service for a fresher, more comfortable space.
                 </p>
             </div>
 
             <a class="service-hero__return-link" href="/index.html">
-                <span aria-hidden="true">←</span>
+                <span aria-hidden="true">&larr;</span>
                 Return to Homepage
             </a>
         </section>
@@ -128,7 +118,7 @@
 
                         <div class="contact-page-section__field">
                             <label for="contact-message">Message</label>
-                            <textarea id="contact-message" name="message" rows="6" placeholder="Tell us about your cleaning needs" required></textarea>
+                            <textarea id="contact-message" name="message" rows="6" autocomplete="off" placeholder="Tell us about your cleaning needs" required></textarea>
                         </div>
 
                         <button class="contact-page-section__button" type="submit">Submit</button>
@@ -172,7 +162,7 @@
         </section>
         <!-- ========== END CONTACT FORM SECTION ========== -->
     </main>
-    <!-- ========== END CONTACT HERO SECTION ========== -->
+    <!-- ========== END MAIN CONTENT ========== -->
 
 
     <!-- ========== FOOTER SECTION ========== -->
@@ -226,7 +216,6 @@
     </footer>
     <!-- ========== END FOOTER SECTION ========== -->
 
-
-<script src="/js/script.js"></script>
+    <script src="/js/script.js" defer></script>
 </body>
 </html>
