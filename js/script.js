@@ -1,6 +1,34 @@
 /* ========== GLOBAL WEBSITE SETUP ========== */
 'use strict';
 
+const prefersReducedMotion = window.matchMedia
+    ? window.matchMedia('(prefers-reduced-motion: reduce)')
+    : { matches: false };
+
+const observeReveal = (target, reveal, options = {}) => {
+    if (!target) {
+        return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+        reveal();
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                reveal();
+                activeObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: options.threshold ?? 0.24
+    });
+
+    observer.observe(target);
+};
+
 
 /* ========== SITE HEADER ========== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -66,7 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
 
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({
+            behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+            block: 'start'
+        });
         window.history.pushState(null, '', `#${targetId}`);
         setActiveLink(targetId);
         return true;
@@ -130,23 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trustStrip.classList.add('is-visible');
     };
 
-    if (!('IntersectionObserver' in window)) {
-        revealTrustStrip();
-        return;
-    }
-
-    const trustStripObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                revealTrustStrip();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.28
-    });
-
-    trustStripObserver.observe(trustStrip);
+    observeReveal(trustStrip, revealTrustStrip, { threshold: 0.28 });
 });
 
 
@@ -161,8 +176,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewport = carousel.querySelector('[data-services-viewport]');
     const track = carousel.querySelector('[data-services-track]');
     const dotsContainer = carousel.querySelector('[data-services-dots]');
+
+    if (!viewport || !track || !dotsContainer) {
+        return;
+    }
+
     const originalCards = Array.from(track.children);
     const cardCount = originalCards.length;
+
+    if (!cardCount) {
+        return;
+    }
+
     const autoplayDelay = 4200;
     let visibleCards = 0;
     let slideStep = 1;
@@ -426,23 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aboutSection.classList.add('is-visible');
     };
 
-    if (!('IntersectionObserver' in window)) {
-        revealAboutSection();
-        return;
-    }
-
-    const aboutObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                revealAboutSection();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.24
-    });
-
-    aboutObserver.observe(aboutSection);
+    observeReveal(aboutSection, revealAboutSection);
 });
 
 
@@ -458,23 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contactSection.classList.add('is-visible');
     };
 
-    if (!('IntersectionObserver' in window)) {
-        revealContactSection();
-        return;
-    }
-
-    const contactObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                revealContactSection();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.24
-    });
-
-    contactObserver.observe(contactSection);
+    observeReveal(contactSection, revealContactSection);
 });
 
 
@@ -490,23 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceBenefitsStrip.classList.add('is-visible');
     };
 
-    if (!('IntersectionObserver' in window)) {
-        revealServiceBenefits();
-        return;
-    }
-
-    const serviceBenefitsObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                revealServiceBenefits();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.28
-    });
-
-    serviceBenefitsObserver.observe(serviceBenefitsStrip);
+    observeReveal(serviceBenefitsStrip, revealServiceBenefits, { threshold: 0.28 });
 });
 
 
@@ -525,6 +502,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const previousButton = gallery.querySelector('[data-gallery-prev]');
     const nextButton = gallery.querySelector('[data-gallery-next]');
     const images = triggers.map((trigger) => trigger.dataset.gallerySrc);
+
+    if (!triggers.length || !lightbox || !lightboxImage || !closeButton || !previousButton || !nextButton) {
+        return;
+    }
+
     let activeIndex = 0;
     let touchStartX = 0;
     let isChangingImage = false;
@@ -648,23 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceProcess.classList.add('is-visible');
     };
 
-    if (!('IntersectionObserver' in window)) {
-        revealServiceProcess();
-        return;
-    }
-
-    const serviceProcessObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                revealServiceProcess();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.28
-    });
-
-    serviceProcessObserver.observe(serviceProcess);
+    observeReveal(serviceProcess, revealServiceProcess, { threshold: 0.28 });
 });
 
 
@@ -680,7 +646,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const setFaqState = (toggle, shouldOpen) => {
         const faqItem = toggle.closest('.service-faq-item');
+        if (!faqItem) {
+            return;
+        }
+
         const answer = faqItem.querySelector('[data-faq-answer]');
+        if (!answer) {
+            return;
+        }
 
         toggle.setAttribute('aria-expanded', String(shouldOpen));
         faqItem.classList.toggle('is-open', shouldOpen);
@@ -706,8 +679,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         faqToggles.forEach((toggle) => {
             if (toggle.getAttribute('aria-expanded') === 'true') {
-                const answer = toggle.closest('.service-faq-item').querySelector('[data-faq-answer]');
-                answer.style.height = `${answer.scrollHeight}px`;
+                const answer = toggle.closest('.service-faq-item')?.querySelector('[data-faq-answer]');
+
+                if (answer) {
+                    answer.style.height = `${answer.scrollHeight}px`;
+                }
             }
         });
     });
@@ -726,23 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceCta.classList.add('is-visible');
     };
 
-    if (!('IntersectionObserver' in window)) {
-        revealServiceCta();
-        return;
-    }
-
-    const serviceCtaObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                revealServiceCta();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.24
-    });
-
-    serviceCtaObserver.observe(serviceCta);
+    observeReveal(serviceCta, revealServiceCta);
 });
 
 
@@ -760,21 +720,5 @@ document.addEventListener('DOMContentLoaded', () => {
         contactPageSection.classList.add('is-visible');
     };
 
-    if (!('IntersectionObserver' in window)) {
-        revealContactPageInfo();
-        return;
-    }
-
-    const contactPageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                revealContactPageInfo();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.24
-    });
-
-    contactPageObserver.observe(contactPageInfo || contactPageSection);
+    observeReveal(contactPageInfo || contactPageSection, revealContactPageInfo);
 });
